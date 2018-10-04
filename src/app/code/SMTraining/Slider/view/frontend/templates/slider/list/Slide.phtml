@@ -1,0 +1,23 @@
+<?php if ($slider = $this->getSlider()) : ?>
+    <title><?php echo $slider->getName(); ?></title>
+    <h1>SMTraining Slider: <?php echo $slider->getName(); ?></h1>
+    <div id="sm-slider-<?php echo $slider->getId(); ?>" class="sm-slider">
+        <ul class="slider">
+            <?php foreach ($this->getSlides() as $slide): ?>
+                <li class="sm-item">
+                    <img src="<?php echo $this->getFullImagePath($slide->getImage()); ?>"
+                         alt="<?php echo $slide->getName(); ?>"/>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <ul class="slider-control">
+            <li><a href="javascript:void(0)" class="ctr-prev-slide">Prev</a></li>
+            <li><a href="javascript:void(0)" class="ctr-next-slide">Next</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        sm_slider("sm-slider-<?php echo $slider->getId(); ?>");
+    </script>
+<?php else : ?>
+    <h1>Slider not found!</h1>
+<?php endif; ?>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="SMTraining_Slider::slider" title="SMTraining Slider" sortOrder="200">
+                    <resource id="SMTraining_Slider::sliders_manager" title="Sliders Manager"/>
+                    <resource id="SMTraining_Slider::slides_manager" title="Slides Manager"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

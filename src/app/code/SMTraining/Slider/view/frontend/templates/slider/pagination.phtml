@@ -1,0 +1,87 @@
+<?php if ($block->getCollection()->getSize()): ?>
+
+    <?php if ($block->getUseContainer()): ?>
+        <div class="pager">
+    <?php endif ?>
+
+    <?php if ($block->getShowAmounts()): ?>
+        <p class="toolbar-amount">
+            <span class="toolbar-number">
+            <?php if ($block->getLastPageNum() > 1): ?>
+                <?php /* @escapeNotVerified */
+                echo __('Items %1 to %2 of %3 total', $block->getFirstNum(), $block->getLastNum(), $block->getTotalNum()) ?>
+            <?php elseif ($block->getTotalNum() == 1): ?>
+                <?php /* @escapeNotVerified */
+                echo __('%1 Item', $block->getTotalNum()) ?>
+            <?php else: ?>
+                <?php /* @escapeNotVerified */
+                echo __('%1 Item(s)', $block->getTotalNum()) ?>
+            <?php endif; ?>
+            </span>
+        </p>
+    <?php endif ?>
+
+    <?php if ($block->getLastPageNum() > 1): ?>
+        <div class="pages">
+            <strong class="label pages-label" id="paging-label"><?php /* @escapeNotVerified */
+                echo __('Page') ?></strong>
+            <ul class="items pages-items" aria-labelledby="paging-label">
+                <?php if ($block->canShowFirst()): ?>
+                    <li class="item">
+                        <a class="page first" href="<?php /* @escapeNotVerified */
+                        echo $block->getFirstPageUrl() ?>">
+                            <span class="label"><?php /* @escapeNotVerified */
+                                echo __('Page') ?></span>
+                            <span>1</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if ($block->canShowPreviousJump()): ?>
+                    <li class="item">
+                        <a class="page previous jump" title="" href="<?php /* @escapeNotVerified */
+                        echo $block->getPreviousJumpUrl() ?>">
+                            <span>...</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php foreach ($block->getFramePages() as $_page): ?>
+                    <li class="item">
+                        <a href="javascript:void(0)" data-bind="click: getSliders.bind($data, <?php echo $_page ?>)"
+                           class="page">
+                            <span class="label"><?php /* @escapeNotVerified */
+                                echo __('Page') ?></span>
+                            <span><?php /* @escapeNotVerified */
+                                echo $_page ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($block->isShowPerPage()): ?>
+        <div class="limiter">
+            <strong class="limiter-label"><?php /* @escapeNotVerified */
+                echo __('Show') ?></strong>
+            <select id="limiter" data-mage-init='{"redirectUrl": {"event":"change"}}' class="limiter-options">
+                <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+                    <option value="<?php /* @escapeNotVerified */
+                    echo $block->getLimitUrl($_key) ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+                        selected="selected"<?php endif ?>>
+                        <?php /* @escapeNotVerified */
+                        echo $_limit ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <span class="limiter-text"><?php /* @escapeNotVerified */
+                echo __('per page') ?></span>
+        </div>
+    <?php endif ?>
+
+    <?php if ($block->getUseContainer()): ?>
+        </div>
+    <?php endif ?>
+
+<?php endif ?>

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\ImportExport\Controller\Adminhtml\Import\Download" type="SMTraining\Slider\Controller\Adminhtml\Import\Download" />
+
+    <!--GENERAL CONFIG-->
+    <!--collection resolves to standard collection class and filerPool-->
+    <virtualType name="SMTrainingSliderGirdFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter
+                </item>
+                <item name="fulltext" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--GRID SLIDER CONIFG-->
+    <!--define provider class that was used in node dataSource/class-->
+    <virtualType name="SMTrainingSliderSliderGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">
+                SMTraining\Slider\Model\ResourceModel\Slider\Collection
+            </argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SMTrainingSliderGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!--configure our grid collection-->
+    <type name="SMTraining\Slider\Model\ResourceModel\Slider\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sm_cms_slider</argument>
+            <argument name="eventPrefix" xsi:type="string">smtraining_slider_slider_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">slider_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">SMTraining\Slider\Model\ResourceModel\Slider</argument>
+
+            <!--add a proxy-->
+            <argument name="testProxy" xsi:type="object">SMTraining\Slider\Model\Slide\Proxy</argument>
+        </arguments>
+    </type>
+
+    <!--register our data source-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smtraining_slider_slider_listing_data_source" xsi:type="string">SMTraining\Slider\Model\ResourceModel\Slider\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--GRID SLIDE CONFIG-->
+    <!--define provider class that was used in node dataSource/class-->
+    <virtualType name="SMTrainingSliderSlideGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">SMTraining\Slider\Model\ResourceModel\Slide\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SMTrainingSlideGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!--register our data source-->
+    <virtualType name="SMTraining\Slider\Model\ResourceModel\Slide\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sm_cms_slider_slide</argument>
+            <argument name="resourceModel" xsi:type="string">SMTraining\Slider\Model\ResourceModel\Slide</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smtraining_slider_slide_listing_data_source" xsi:type="string">SMTraining\Slider\Model\ResourceModel\Slide\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--Image Upload-->
+    <type name="SMTraining\Slider\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">images</argument>
+            <argument name="basePath" xsi:type="string">images</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="SMTraining\Slider\Controller\Adminhtml\Slide\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">SMTraining\Slider\Model\ImageUploader</argument>
+        </arguments>
+    </type>
+
+    <!--PLUGIN-->
+    <type name="SMTraining\Slider\Model\Slider">
+        <plugin name="SMTraining_Plugin" type="SMTraining\Slider\Plugin\TestPlugin" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="Magento\ImportExport\Controller\Adminhtml\Import\Download">
+        <plugin name="SMTraining_Plugin" type="SMTraining\Slider\Plugin\SampleDownload" />
+    </type>
+</config>

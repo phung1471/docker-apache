@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="SMTraining_Slider::slider"
+             title="SMTraining Slider"
+             module="SMTraining_Slider"
+             sortOrder="10"
+             resource="SMTraining_Slider::slider"/>
+
+        <add id="SMTraining_Slider::sliders_manager"
+             title="Slider"
+             module="SMTraining_Slider"
+             parent="SMTraining_Slider::slider"
+             sortOrder="10"
+             action="smtraining/slider"
+             resource="SMTraining_Slider::sliders_manager"/>
+
+        <add id="SMTraining_Slider::slides_manager"
+             title="Slides"
+             module="SMTraining_Slider"
+             parent="SMTraining_Slider::slider"
+             sortOrder="20"
+             action="smtraining/slide"
+             resource="SMTraining_Slider::slides_manager"/>
+    </menu>
+</config>

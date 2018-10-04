@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!--<css src="SMTraining_Slider::css/style.css"/>-->
+        <!--<script src="SMTraining_Slider::js/script.js"/>-->
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="SMTraining\Slider\Block\Frontend\ListSlide\Slide" name="slider.detail"
+                   template="SMTraining_Slider::slider/list/Slide.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

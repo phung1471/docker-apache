@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+        <css src="SMTraining_Slider::css/style.css"/>
+        <!-- Add js using link tag-->
+        <!--<link src="js/script.js"/>-->
+
+        <!-- Add js-->
+        <script src="SMTraining_Slider::js/script.js"/>
+
+        <!-- Add external js -->
+        <!--<script src="https://apis.google.com/js/platform.js" src_type="url" />-->
+    </head>
+</page>

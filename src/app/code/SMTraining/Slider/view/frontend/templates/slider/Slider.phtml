@@ -1,0 +1,10 @@
+<h1>SMTraining List Sliders</h1>
+<ul class="list-slider">
+    <?php foreach ($this->getSliders() as $slider): ?>
+        <li class="item"><a href="<?php echo $this->getSliderUrl($slider); ?>"><?php echo $slider->getName(); ?></a></li>
+    <?php endforeach; ?>
+</ul>
+
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>

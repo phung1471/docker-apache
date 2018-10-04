@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+    <widget id="smtraining_slider_slider" class="SMTraining\Slider\Block\Widget\Slider">
+        <label translate="true">SMTraining Slider</label>
+        <description translate="true">Slider module for training</description>
+        <parameters>
+            <parameter name="slider_id" xsi:type="select" required="true" visible="true"
+                       source_model="SMTraining\Slider\Model\ResourceModel\Slider\Collection">
+                <label translate="true">Slider</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

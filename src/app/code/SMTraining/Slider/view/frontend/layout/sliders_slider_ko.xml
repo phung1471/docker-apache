@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="SMTraining\Slider\Block\Frontend\Slider\KO" name="list.slider.ko" template="SMTraining_Slider::slider/ko.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="sm_slider" xsi:type="array">
+                                <item name="component" xsi:type="string">SMTraining_Slider/js/slider_ko</item>
+                                <item name="displayArea" xsi:type="string">sm_slider</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

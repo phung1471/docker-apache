@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+  <acl>
+    <resources>
+      <resource id="Magento_Backend::admin">
+        <resource id="Toptal_Blog::blog" title="Blog" sortOrder="51"/>
+        <resource id="Magento_Backend::stores">
+          <resource id="Magento_Backend::stores_settings">
+            <resource id="Magento_Config::config">
+              <resource id="Toptal_Blog::blog_config" title="Blog"/>
+            </resource>
+          </resource>
+        </resource>
+      </resource>
+    </resources>
+  </acl>
+</config>
